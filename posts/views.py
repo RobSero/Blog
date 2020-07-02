@@ -37,3 +37,21 @@ class PostDetails(APIView):
     post = self.get_post(pk)
     serialized_post = PopulatedPostSerializer(post)
     return Response(serialized_post.data, status=status.HTTP_200_OK)
+  
+  
+
+# ------------- GET ALL CATEGORY BLOG POSTS ---------------
+class CategoryPosts(APIView):
+  def get_posts(self):
+    try:
+      return Post.objects.all()
+    except Post.DoesNotExist:
+      return NotFound()
+
+
+  def get(self,req):
+    all_posts = Post.objects.all()
+    serialized_posts = PopulatedPostSerializer(all_posts,many=True)
+    return Response(serialized_posts.data, status=status.HTTP_200_OK)
+  
+  
