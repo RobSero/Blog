@@ -1,10 +1,13 @@
-from django.shortcuts import render
+
+from django.db.models import Q
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework import status
 from rest_framework.views import APIView
 from posts.models import Post
+from categories.models import Category
 from .serializers import PostSerializer, PopulatedPostSerializer
+import random
 
 
 # ------------- GET ALL BLOG POSTS ---------------
@@ -54,4 +57,35 @@ class CategoryPosts(APIView):
     serialized_posts = PopulatedPostSerializer(all_posts,many=True)
     return Response(serialized_posts.data, status=status.HTTP_200_OK)
   
+
+
+# ------------- GET RECOMMENDED BLOG POSTS ---------------
+class RecommendedPosts(APIView):
+  # get one post
+  def get_post(self,pk):
+    try:
+      return Post.objects.get(pk=pk)
+    except Post.DoesNotExist:
+      return NotFound()
+
+# get similar posts by category type
+  def get_category_posts(self,pk):
+    try:
+      return Post.objects.filter(category__id=pk)
+    except Post.DoesNotExist:
+      return NotFound()
+
+
+  def get(self,req,pk):
+    # get main post
+    post = self.get_post(pk)
+    # get categories of post
+    categories = post.category.all()
+    # get other posts by category ids (__in will filter them by the manytomanyfield)
+    related_posts = Post.objects.filter(category__in=categories).filter(~Q(pk=post.id))
+    # create a random selection
+    selection = random.sample(population=list(related_posts), k=5)
+    # serialize and send
+    serialized_recommended_posts = PopulatedPostSerializer(selection,many=True)
+    return Response(serialized_recommended_posts.data, status=status.HTTP_200_OK)
   
