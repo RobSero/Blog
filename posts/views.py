@@ -17,7 +17,7 @@ class PostIndex(APIView):
 
 
   def get(self,req):
-    all_posts = Post.objects.all()
+    all_posts = self.get_posts()
     serialized_posts = PopulatedPostSerializer(all_posts,many=True)
     return Response(serialized_posts.data, status=status.HTTP_200_OK)
   
@@ -42,15 +42,16 @@ class PostDetails(APIView):
 
 # ------------- GET ALL CATEGORY BLOG POSTS ---------------
 class CategoryPosts(APIView):
-  def get_posts(self):
+  def get_category_posts(self,pk):
     try:
-      return Post.objects.all()
+      return Post.objects.filter(category__id=pk)
     except Post.DoesNotExist:
       return NotFound()
 
 
-  def get(self,req):
-    all_posts = Post.objects.all()
+  def get(self,req,pk):
+    print('YO')
+    all_posts = self.get_category_posts(pk=pk)
     serialized_posts = PopulatedPostSerializer(all_posts,many=True)
     return Response(serialized_posts.data, status=status.HTTP_200_OK)
   
