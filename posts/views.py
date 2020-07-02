@@ -84,8 +84,12 @@ class RecommendedPosts(APIView):
     # get other posts by category ids (__in will filter them by the manytomanyfield)
     related_posts = Post.objects.filter(category__in=categories).filter(~Q(pk=post.id))
     # create a random selection
-    selection = random.sample(population=list(related_posts), k=5)
+    
     # serialize and send
-    serialized_recommended_posts = PopulatedPostSerializer(selection,many=True)
+    serialized_recommended_posts = PopulatedPostSerializer(related_posts,many=True)
+    if len(serialized_recommended_posts.data) > 5:
+      random_selection = random.sample(serialized_recommended_posts.data, k=5)
+      print(random_selection)
+      return Response(random_selection, status=status.HTTP_200_OK)
     return Response(serialized_recommended_posts.data, status=status.HTTP_200_OK)
   
