@@ -50,7 +50,6 @@ class CategoryPosts(APIView):
 
 
   def get(self,req,pk):
-    print('YO')
     all_posts = self.get_category_posts(pk=pk)
     serialized_posts = PopulatedPostSerializer(all_posts,many=True)
     return Response(serialized_posts.data, status=status.HTTP_200_OK)
