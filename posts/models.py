@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 class Post(models.Model):
   title = models.CharField(max_length=250)
   image = models.CharField(max_length=300)
+  description = models.TextField(max_length=150)
   content = models.TextField()
   author = models.ForeignKey(
     User,
@@ -13,7 +14,7 @@ class Post(models.Model):
   )
   category = models.ManyToManyField(
     'categories.Category',
-    related_name='posts'
+    related_name='post'
   )
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)

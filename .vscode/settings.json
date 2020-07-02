@@ -1,3 +1,10 @@
 {
-  "python.pythonPath": "/Users/robserowka/.local/share/virtualenvs/blog-GbW-2OLd/bin/python"
+  "python.pythonPath": "/Users/robserowka/.local/share/virtualenvs/property-investor-aODhbg4M/bin/python",
+  "workbench.colorCustomizations": {
+  
+    "statusBar.background": "#1c27c9d3",
+    "titleBar.activeBackground": "#1c27c9d3",
+    "titleBar.inactiveBackground": "#1c27c9d3",
+  },
+  "window.title": "BackEnd - Blog",
 }
