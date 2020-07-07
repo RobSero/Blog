@@ -1,6 +1,6 @@
 (Insert logo)
 
-# RentGap - Investment Simulation
+# My Experimental Blog
 
 ## **1.0 - Overview**
 
