@@ -11,21 +11,21 @@ Practicing with SEO and analytics was something I always found interesting about
 
 ## **2.0 Technology Summary**
 
-The app’s stack is relatively simple with a django backend to utilise the features of the django admin page to make posts quickly. The client side uses a React app which was intentional as it is an opportunity to explore how SEO works with single page applications. 
+The app’s stack is relatively simple with a django backend to utilise the features of the django admin page to make posts quickly. The client side was difficult to choose where the project would use a single page application or a templating engine on the server side.
 
 ### **2.1 - Client Side**
 
-- Jinja Templating Engine
+- Jinja Template Engine
 - CSS3
 - ES6 JavaScript
 
-Initially this project aimed to use a React frontend however due to the risk of hurting SEO (see section XX) and with React being quite opinionated, I decided to use the django in-built Jinja templating engine. This also allows me to experiment and build custom html/css features without having to worry about handling states and passing too much data around via props. 
+Initially this project aimed to use a React frontend however due to the risk of hurting SEO (see section 3.1) and with React being quite opinionated, I decided to use Jinja2 template engine as it was similar to Django's in-built template system. This also allows me to experiment and build custom html/css features without having to worry about handling states and passing too much data around via props. 
 
 ### **2.2 - Server Side -**
 
 - Python
 - Django
-- Postgres Database
+- PostgreSQL Database
 
 The Django backend was selected over Flask generally for the ease of setup as the project is not too demanding on the server side and the in-built django admin page was sufficient for blogging as it is only me as the superuser. Furthermore Jinja is already setup with Django quite nicely and so it meant that transitioning from React to Jinja was relatively smooth. 
 
