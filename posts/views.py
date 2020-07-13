@@ -1,5 +1,6 @@
 
 from django.db.models import Q
+from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework import status
@@ -22,7 +23,8 @@ class PostIndex(APIView):
   def get(self,req):
     all_posts = self.get_posts()
     serialized_posts = PopulatedPostSerializer(all_posts,many=True)
-    return Response(serialized_posts.data, status=status.HTTP_200_OK)
+    # return Response(serialized_posts.data, status=status.HTTP_200_OK)
+    return render(req, 'posts/home.html')
   
   
   
@@ -92,4 +94,5 @@ class RecommendedPosts(APIView):
       print(random_selection)
       return Response(random_selection, status=status.HTTP_200_OK)
     return Response(serialized_recommended_posts.data, status=status.HTTP_200_OK)
+  
   
