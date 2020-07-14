@@ -4,11 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TEST JINJA</title>
-  {% load staticfiles %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navstyle.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'css/carosel.css' %}">
+  <link rel="stylesheet" href="{% static 'css/blogshow.css' %}">
+  <link rel="stylesheet" href="{% static 'css/suggestedCards.css' %}">
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 </head>
 <body>
-  {% include 'posts/components/navbar.html' %}
+    <!-- NAV BAR - DESKTOP -->
+    <nav class="r-nav-container">
+      <p class="r-nav-link">Contact</p>
+      <p class="r-nav-link">Contact</p>
+      <p class="r-main-title">Title</p>
+      <p class="r-nav-link">Contact</p>
+      <p class="r-nav-link">Contact</p>
+    </nav>
+  
+    <!-- NAV BAR - MOBILE -->
+    <nav class="m-nav-container">
+      <p class="m-main-title">Title</p>
+      <img src="{% static 'assets/pngwave (21).png' %}" class="burger-button" id="dropdown-toggle" />
+    </nav>
+    <div class="m-nav-dropdown" id="mobile-dropdown">
+      <p class="m-nav-link">Contact</p>
+      <p class="m-nav-link">Contact</p>
+      <p class="m-nav-link">Contact</p>
+      <p class="m-nav-link">Contact</p>
+    </div>
+  
   {% block content %}
   {% endblock %}
+
+
+  <div class="footer">
+    <p>Background image by James Epsy - jamesepsi.com</p>
+  </div>
+  <script src="{% static 'js/navbar.js' %}"></script>
 </body>
 </html>

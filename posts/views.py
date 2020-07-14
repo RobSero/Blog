@@ -40,8 +40,10 @@ class PostDetails(APIView):
 
   def get(self,req,pk):
     post = self.get_post(pk)
-    serialized_post = PopulatedPostSerializer(post)
-    return Response(serialized_post.data, status=status.HTTP_200_OK)
+    # serialized_post = PopulatedPostSerializer(post)
+    # return Response(serialized_post.data, status=status.HTTP_200_OK)
+    print(type(post))
+    return render(req, 'posts/blogShow.html', {'post': post})
   
   
 

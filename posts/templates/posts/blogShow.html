@@ -1,0 +1,74 @@
+{% extends 'posts/header.html' %}
+{% load static %}
+{% block content %}
+
+  <!-- BLOG SECTION -->
+  <div class="show-container">
+    <section class="post-container">
+      <!-- POST IMAGE -->
+      <div class="post-main-image" style="background-image: url({{post.main_image}});">
+
+      </div>
+      <!-- POST HEADERS -->
+      <div class="post-header">
+        <div class="dot-container">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <h1 class="blog-title">{{post.title}}</h1>
+        <h5 class="blog-subtitle">{{post.updated_at}}</h5>
+      </div>
+
+      <!-- POST CONTENT -->
+      <div class="post-content">
+        <div class="flex-item">
+          <p class="text-section-one">{{post.content_block_one}}
+            <br />
+            <br />
+            {{post.content_block_two}}</p>
+        </div>
+        <div class="flex-item">
+          <div class="post-secondary-image" style="background-image: url({{post.main_image}});"></div>
+          <p class="text-section-two">{{post.content_block_three}}</p>
+        </div>
+        <img class="hrline" src="{% static 'assets/divingline1.png' %}" />
+        <p class="text-section-three">
+          {{post.content_block_four}}
+        </p>
+      </div>
+
+      <!-- RANDOM CONTENT -->
+      <div class="random-section">
+
+      </div>
+    </section>
+
+    <!-- SUGGESTED POST CARDS -->
+    <div class="suggested-container">
+      <div class="sug-flex-card">
+        <div class="sug-card-image" style="background-image: url({% static 'assets/main-card.jpg' %});"></div>
+        <p>Why there needs to be more sick blogs like mine hehe</p>
+      </div>
+      <div class="sug-flex-card">
+        <div class="sug-card-image" style="background-image: url({% static 'assets/main-card.jpg' %});"></div>
+        <p>Why there needs to be more sick blogs like mine hehe</p>
+      </div>
+      <div class="sug-flex-card">
+        <div class="sug-card-image" style="background-image: url({% static 'assets/main-card.jpg' %});"></div>
+        <p>Why there needs to be more sick blogs like mine hehe</p>
+      </div>
+      <div class="sug-flex-card">
+        <div class="sug-card-image" style="background-image: url({% static 'assets/main-card.jpg' %});"></div>
+        <p>Why there needs to be more sick blogs like mine hehe</p>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+{% endblock %}

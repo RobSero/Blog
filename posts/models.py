@@ -3,9 +3,13 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Post(models.Model):
   title = models.CharField(max_length=250)
-  image = models.CharField(max_length=300)
+  main_image = models.CharField(max_length=300)
+  sub_image = models.CharField(max_length=300)
   description = models.TextField(max_length=150)
-  content = models.TextField()
+  content_block_one = models.TextField(max_length=415)
+  content_block_two = models.TextField(max_length=615)
+  content_block_three = models.TextField(max_length=540)
+  content_block_four = models.TextField()
   author = models.ForeignKey(
     User,
     related_name='author',
