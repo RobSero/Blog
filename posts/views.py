@@ -27,8 +27,7 @@ class PostIndex(APIView):
     return render(req, 'posts/home.html')
   
   
-  
-  
+
 # ------------- GET SINGLE BLOG POST ---------------
 class PostDetails(APIView):
   def get_post(self,pk):
@@ -55,8 +54,6 @@ class PostDetails(APIView):
     print(related_posts)
     return render(req, 'posts/blogShow.html', {'post': post, 'recommendedPosts' : related_posts[:4]})
   
-  
-
 
 # ------------- GET RECOMMENDED BLOG POSTS ---------------
 class RecommendedPosts(APIView):
@@ -106,4 +103,14 @@ class CategoryPosts(APIView):
     all_posts = self.get_category_posts(pk=pk)
     serialized_posts = PopulatedPostSerializer(all_posts,many=True)
     return Response(serialized_posts.data, status=status.HTTP_200_OK)
+  
+
+
+
+# ------------- ABOUT PAGE ---------------
+class AboutPage(APIView):
+
+  def get(self,req):
+    return render(req, 'posts/about.html')
+  
   
