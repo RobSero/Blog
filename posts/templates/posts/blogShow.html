@@ -47,22 +47,14 @@
 
     <!-- SUGGESTED POST CARDS -->
     <div class="suggested-container">
+      {% for post in recommendedPosts %}
       <div class="sug-flex-card">
-        <div class="sug-card-image" style="background-image: url({% static 'assets/main-card.jpg' %});"></div>
-        <p>Why there needs to be more sick blogs like mine hehe</p>
+        <a href="/{{post.id}}">
+        <div class="sug-card-image" style="background-image: url({{ post.main_image }})"></div>
+        <p>{{ post.title }}</p>
+      </a>
       </div>
-      <div class="sug-flex-card">
-        <div class="sug-card-image" style="background-image: url({% static 'assets/main-card.jpg' %});"></div>
-        <p>Why there needs to be more sick blogs like mine hehe</p>
-      </div>
-      <div class="sug-flex-card">
-        <div class="sug-card-image" style="background-image: url({% static 'assets/main-card.jpg' %});"></div>
-        <p>Why there needs to be more sick blogs like mine hehe</p>
-      </div>
-      <div class="sug-flex-card">
-        <div class="sug-card-image" style="background-image: url({% static 'assets/main-card.jpg' %});"></div>
-        <p>Why there needs to be more sick blogs like mine hehe</p>
-      </div>
+      {% endfor %}
     </div>
 
 

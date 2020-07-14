@@ -37,18 +37,7 @@ class PostDetails(APIView):
     except Post.DoesNotExist:
       return NotFound()
 
-
-  def get(self,req,pk):
-    post = self.get_post(pk)
-    # serialized_post = PopulatedPostSerializer(post)
-    # return Response(serialized_post.data, status=status.HTTP_200_OK)
-    print(type(post))
-    return render(req, 'posts/blogShow.html', {'post': post})
-  
-  
-
-# ------------- GET ALL CATEGORY BLOG POSTS ---------------
-class CategoryPosts(APIView):
+# get similar posts by category type
   def get_category_posts(self,pk):
     try:
       return Post.objects.filter(category__id=pk)
@@ -57,9 +46,15 @@ class CategoryPosts(APIView):
 
 
   def get(self,req,pk):
-    all_posts = self.get_category_posts(pk=pk)
-    serialized_posts = PopulatedPostSerializer(all_posts,many=True)
-    return Response(serialized_posts.data, status=status.HTTP_200_OK)
+    # get post
+    post = self.get_post(pk)
+     # get categories of post
+    categories = post.category.all()
+    # get other posts by category ids (__in will filter them by the manytomanyfield)
+    related_posts = Post.objects.filter(category__in=categories).filter(~Q(pk=post.id))
+    print(related_posts)
+    return render(req, 'posts/blogShow.html', {'post': post, 'recommendedPosts' : related_posts[:4]})
+  
   
 
 
@@ -88,13 +83,27 @@ class RecommendedPosts(APIView):
     # get other posts by category ids (__in will filter them by the manytomanyfield)
     related_posts = Post.objects.filter(category__in=categories).filter(~Q(pk=post.id))
     # create a random selection
-    
     # serialize and send
     serialized_recommended_posts = PopulatedPostSerializer(related_posts,many=True)
     if len(serialized_recommended_posts.data) > 5:
-      random_selection = random.sample(serialized_recommended_posts.data, k=5)
+      random_selection = random.sample(serialized_recommended_posts.data, k=4)
       print(random_selection)
       return Response(random_selection, status=status.HTTP_200_OK)
     return Response(serialized_recommended_posts.data, status=status.HTTP_200_OK)
   
+  
+
+# ------------- GET ALL CATEGORY BLOG POSTS ---------------
+class CategoryPosts(APIView):
+  def get_category_posts(self,pk):
+    try:
+      return Post.objects.filter(category__id=pk)
+    except Post.DoesNotExist:
+      return NotFound()
+
+
+  def get(self,req,pk):
+    all_posts = self.get_category_posts(pk=pk)
+    serialized_posts = PopulatedPostSerializer(all_posts,many=True)
+    return Response(serialized_posts.data, status=status.HTTP_200_OK)
   

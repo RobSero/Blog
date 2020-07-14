@@ -23,6 +23,7 @@
   display: inline-block;
   margin: 0.3rem 2rem;
   font-size: 1.7rem;
+  text-decoration: none;
 }
 
 .m-nav-container {
@@ -63,6 +64,7 @@
     display: inline-block;
     margin: 0.3rem 2rem;
     font-size: 1.3rem;
+    text-decoration: none;
   }
   .m-nav-container .burger-button {
     position: fixed;
