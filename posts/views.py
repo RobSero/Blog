@@ -22,9 +22,9 @@ class PostIndex(APIView):
 
   def get(self,req):
     all_posts = self.get_posts()
-    serialized_posts = PopulatedPostSerializer(all_posts,many=True)
+    # serialized_posts = PopulatedPostSerializer(all_posts,many=True)
     # return Response(serialized_posts.data, status=status.HTTP_200_OK)
-    return render(req, 'posts/home.html')
+    return render(req, 'posts/home.html', {'posts' : all_posts})
   
   
 

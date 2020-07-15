@@ -27,5 +27,23 @@
     </div>
 
 
+<!-- SECTION - BLOG POST LIST -->
+<section class="light-section ">
+  <div class="posts-flex">
+
+    {% for post in posts %}
+
+    <div class="post-card">
+      <a href="/{{ post.id }}">
+        <div class="post-card-image" style="background-image: url({{ post.main_image }});">
+        </div>
+        <p class='post-card-text'>{{ post.title }}</p>
+      </a>
+ 
+    </div >
+  
+    {% endfor %}
+ </div>
+</section>
 
 {% endblock %}
