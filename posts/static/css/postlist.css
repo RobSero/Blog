@@ -17,6 +17,10 @@
   height: 80%;
   width: 100%;
   background-size: cover;
+  transition: all 0.4s ease;
+}
+.post-card .post-card-image:hover {
+  opacity: 0.5;
 }
 .post-card .post-card-text {
   font-size: 1rem;

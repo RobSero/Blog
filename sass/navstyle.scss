@@ -39,6 +39,20 @@
   display: none;
 }
 
+// underline animation
+.r-main-title, .r-nav-link {
+  text-decoration: none;
+  
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size .3s;
+}
+
+.r-main-title:hover, .r-nav-link:hover, .r-nav-link:focus .r-main-title:focus {
+  background-size: 100% 2px;
+}
 
 
 //  -------- TABLET DESIGN --------------

@@ -15,6 +15,7 @@
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  transition: all 0.4s ease;
 }
 .suggested-container .sug-flex-card .sug-card-image {
   height: 70%;
@@ -23,6 +24,10 @@
 }
 .suggested-container .sug-flex-card p {
   margin: 0.5rem;
+}
+.suggested-container .sug-flex-card:hover {
+  box-shadow: 0 0 50px #3b29db;
+  transform: translate(0, -15px);
 }
 
 /*# sourceMappingURL=suggestedCards.css.map */
