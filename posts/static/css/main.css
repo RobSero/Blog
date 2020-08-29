@@ -17,6 +17,8 @@ body a {
 .light-section {
   background-color: white;
   color: #222738;
+  background-image: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
+  font-size: 35px;
 }
 
 .section-title {
