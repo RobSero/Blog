@@ -1,4 +1,4 @@
-(Insert logo)
+**Note: I have since migrated my blog over to Wordpress.org due the vast libary of plugins already available. This has allowed me to free up time to focus on other projects and build a faster and more robust blogging site. The latest blog has yet to be deployed once a significant amount of blog posts have been initially completed for launch**
 
 # My Experimental Blog
 
@@ -11,15 +11,15 @@ Practicing with SEO and analytics was something I always found interesting about
 
 ## **2.0 Technology Summary**
 
-The app’s stack is relatively simple with a django backend to utilise the features of the django admin page to make posts quickly. The client side was difficult to choose where the project would use a single page application or a templating engine on the server side.
+The app’s stack is relatively simple with a django backend to utilise the features of the django admin page to make posts quickly. The client side was difficult to choose between the project using a single page application option or a templating engine on the server side.
 
 ### **2.1 - Client Side**
 
-- Jinja Template Engine
+- Django Template Engine
 - CSS3
 - ES6 JavaScript
 
-Initially this project aimed to use a React frontend however due to the risk of hurting SEO (see section 3.1) and with React being quite opinionated, I decided to use Jinja2 template engine as it was similar to Django's in-built template system. This also allows me to experiment and build custom html/css features without having to worry about handling states and passing too much data around via props. 
+Initially this project aimed to use a React frontend however due to the risk of hurting SEO (see section 3.1) and with React being quite opinionated, I decided to keep with Django's template language as it was similar to Jinja's template system. This also allows me to experiment and build custom html/css features without having to worry about handling states and passing too much data around via props. 
 
 ### **2.2 - Server Side -**
 
@@ -27,7 +27,7 @@ Initially this project aimed to use a React frontend however due to the risk of 
 - Django
 - PostgreSQL Database
 
-The Django backend was selected over Flask generally for the ease of setup as the project is not too demanding on the server side and the in-built django admin page was sufficient for blogging as it is only me as the superuser. Furthermore Jinja is already setup with Django quite nicely and so it meant that transitioning from React to Jinja was relatively smooth. 
+The Django backend was selected over Flask generally for the ease of setup as the project is not too demanding on the server side and the in-built django admin page was sufficient for blogging as it is only myself as the superuser. Furthermore Jinja is already setup with Django quite nicely and so it meant that transitioning from React to Jinja was relatively smooth. 
 
 
 
@@ -37,7 +37,7 @@ The Django backend was selected over Flask generally for the ease of setup as th
 
 After researching how Google uses crawlers and indexing for everything in their search database, it was apparent that there have been potential issues in the past regarding how single page applications are assessed by Google. 
 
-The nature of single page applications using AJAX requests to update their data rather than in the static html that is sent from the server meant that it can be 'expensive' to crawl and index information. This is not so much a big deal for a hobby project but the purpose of this project was to learn about SEO and analytics and so this is what spurred on the change from using React to Jinja. 
+The nature of single page applications using AJAX requests to update their data rather than in the static html that is sent from the server meant that it can be 'expensive' to crawl and index information. This is not so much a big deal for a hobby project but the purpose of this project was to learn about SEO and analytics and so this is what spurred on the change from using React to Django Template Language. 
 
 It is likely Google have resolved most of the issues with finding the information they need in the javascript files rather than the html but for now, it made sense to keep it static and remove the requirement client side rendering.
 
